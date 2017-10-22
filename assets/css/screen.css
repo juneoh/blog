@@ -718,7 +718,7 @@ body.nav-opened .nav {
     display: block;
     position: absolute;
     z-index: 100;
-    bottom: 45px;
+    bottom: 90px;
     left: 50%;
     margin-left: -16px;
     width: 34px;
@@ -887,7 +887,7 @@ body.nav-opened .nav {
     font-weight: 400;
     font-family: "Merriweather", serif;
     letter-spacing: 0.01rem;
-    color: rgba(255,255,255,0.8);
+    color: #fff;
 }
 
 .no-cover.main-header {
