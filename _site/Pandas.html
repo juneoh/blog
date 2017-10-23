@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>Pandas</title>
+    <meta name="description" content="For handling tabular data." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- [[! highlight.js ]] -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="http://juneoh.com///Pandas" />
+    <meta name="referrer" content="origin" />
+    <link rel="next" href="/page2/" />
+
+    <meta property="og:site_name" content="June Oh" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pandas" />
+    <meta property="og:description" content="For handling tabular data." />
+    <meta property="og:url" content="http://juneoh.com///Pandas" />
+    <meta property="og:image" content="/assets/posts/2017-10-22-Pandas/IMG_0962.JPG" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pandas" />
+    <meta name="twitter:description" content="For handling tabular data." />
+    <meta name="twitter:url" content="http://juneoh.com///Pandas" />
+    <meta name="twitter:image:src" content="/assets/posts/2017-10-22-Pandas/IMG_0962.JPG" />
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "June Oh",
+    "name": "Pandas",
+    "url": "http://juneoh.com///Pandas",
+    "image": "/assets/posts/2017-10-22-Pandas/IMG_0962.JPG",
+    "description": "For handling tabular data."
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="June Oh" href="/feed.xml" />
+
+
+</head>
+<body class="post-template nav-closed">
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-essays " role="presentation"><a href="/tag/essays">Essays</a></li>
+        <li class="nav-UxP " role="presentation"><a href="/tag/UxP">UNIX and Python</a></li>
+        <!--        <li class="nav-pytorch " role="presentation"><a href="/tag/pytorch">Deeply PyTorch</a></li> -->
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/posts/2017-10-22-Pandas/IMG_0962.JPG) ">
+    <nav class="main-nav  overlay  clearfix">
+      <a class="blog-logo" href="/">June Oh</a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Pandas</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>June Oh</a> -->
+            <time class="post-date" datetime="2017-10-22">22 Oct 2017</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/UxP'>Uxp</a>
+                       
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+            
+            <h2 id="the-case">The case</h2>
+
+<p>Here is a typical CSV data, which is a data in a 2 dimensional table form:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">name</th>
+      <th style="text-align: center">area</th>
+      <th style="text-align: center">population</th>
+      <th style="text-align: center">…</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Monaco</td>
+      <td style="text-align: center">1.98</td>
+      <td style="text-align: center">36,371</td>
+      <td style="text-align: center">…</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Gibraltar</td>
+      <td style="text-align: center">6.8</td>
+      <td style="text-align: center">29,431</td>
+      <td style="text-align: center">…</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Vatican City</td>
+      <td style="text-align: center">0.44</td>
+      <td style="text-align: center">900</td>
+      <td style="text-align: center">…</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">…</td>
+      <td style="text-align: center">…</td>
+      <td style="text-align: center">…</td>
+      <td style="text-align: center">…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Let’s pick a column from the table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">area</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1.98</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6.8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0.44</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The data in this column is <strong><u>homo</u>geneous</strong>; all the values are in the same type, the decimal number.</p>
+
+<p>Let’s pick a row from the table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">name</th>
+      <th style="text-align: center">area</th>
+      <th style="text-align: center">population</th>
+      <th style="text-align: center">…</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Monaco</td>
+      <td style="text-align: center">1.98</td>
+      <td style="text-align: center">36,371</td>
+      <td style="text-align: center">…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The data in this row is <strong><u>hetero</u>geneous</strong>; the values are in different types, text(name), decimal(area), and integer(population).</p>
+
+<p><strong>Homogeneity is good for speed.</strong> If your data is homogeneous, each value can be stored in the same length of memory. This allows faster access to each value, because you can jump between memory addresses by calculating the distance between values. Both NumPy and Pandas support such technique.</p>
+
+<p><strong>But real-life data are heterogeneous.</strong> NumPy enforces complete homogeneity within data, e.g. integer matrix. If you have varying types, NumPy will treat them as the heavy <code>object</code> type. But in Pandas, you can have a mix of homogeneity and heterogeneity, perfect for representing data tables.</p>
+
+<hr />
+
+<h2 id="the-application">The application</h2>
+
+<p>Pandas provides a <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html"><code>DataFrame</code></a> class that represents 2 dimensional tabular data. It is very similar to R programming language’s <code>dataframe</code> class.</p>
+
+<p>Although being a great tool, Pandas has some oddities that will be explained later on:</p>
+
+<ul>
+  <li>Having multiple ways of getting the same value, some ways being read-only and some read-write
+    <ul>
+      <li>Using <code>[]</code>, attributes, <code>.loc</code>, and <code>.iloc</code></li>
+    </ul>
+  </li>
+  <li>The confusing relationship between indices and labels
+    <ul>
+      <li>Namely, <code>.sort_index()</code> that sorts by labels, not indices</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Pandas can be easily installed via <code>pip</code>.</p>
+
+<h3 id="creating-dataframe">1. Creating <code>DataFrame</code></h3>
+
+<p>The examples below suppose a <code>countries.csv</code> file with the following contents:</p>
+
+<pre><code class="language-csv">name,area,population
+Monaco,1.98,36371
+Gibraltar,6.8,29431
+Vatican City,0.44,900
+</code></pre>
+
+<hr />
+
+<h4 id="dataframe-fromto-csv">1.1. <code>DataFrame</code> from/to CSV</h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/csv.jpg" alt="" /></p>
+
+<p>Use
+<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_csv.html"><code>pandas.DataFrame.from_csv()</code></a> to create a <code>DataFrame</code> object from a CSV
+file:</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; import pandas as pd
+&gt;&gt;&gt; df = pd.DataFrame.from_csv("countries.csv", index_col=None)
+&gt;&gt;&gt; df
+           name  area  population
+0        Monaco  1.98       36371
+1     Gibraltar  6.80       29431
+2  Vatican City  0.44         900
+</code></pre>
+
+<p>You can be more explicit with
+<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html"><code>pandas.read_csv()</code></a>:</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df = pd.read_csv("countries.csv", header=0, names=("v1", "v2"), index_col=0, dtype=str)
+&gt;&gt;&gt; df
+                v1     v2
+Monaco        1.98  36371
+Gibraltar     6.80  29431
+Vatican City  0.44    900
+</code></pre>
+
+<p>Use
+<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html"><code>pandas.DataFrame.to_csv()</code></a> to write a <code>DataFrame</code> object to a CSV file.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.to_csv("countries.csv", index=False)
+</code></pre>
+
+<hr />
+
+<h4 id="dataframe-from-2d-list">1.2. <code>DataFrame</code> from 2D <code>list</code></h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/list.jpg" alt="" /></p>
+
+<p>Use
+<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_records.html"><code>pandas.DataFrame.from_records()</code></a>
+to create a <code>DataFrame</code> object from a <code>list</code> of <code>list</code>s/<code>tuple</code>s:</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; data = [("Monaco", 1.98, 36371), ("Gibraltar", 6.8, 29431), ("Vatican City", 0.44, 900)]
+&gt;&gt;&gt; df = pd.DataFrame.from_records(data, columns=("name", "area", "population"))
+&gt;&gt;&gt; df
+           name  area  population
+0        Monaco  1.98       36371
+1     Gibraltar  6.80       29431
+2  Vatican City  0.44         900
+</code></pre>
+
+<p>Or from a <code>list</code> of <code>dict</code>s:</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; data = []
+&gt;&gt;&gt; data.append({"name": "Monaco", "area": 1.98, "population": 36371})
+&gt;&gt;&gt; data.append({"name": "Gibraltar", "area": 6.80, "population": 29431})
+&gt;&gt;&gt; data.append({"name": "Vatican City", "area": 0.44, "population": 900})
+&gt;&gt;&gt; df = pd.DataFrame.from_records(data)
+&gt;&gt;&gt; df
+   area          name  population
+0  1.98        Monaco       36371
+1  6.80     Gibraltar       29431
+2  0.44  Vatican City         900
+</code></pre>
+
+<p><strong>But note that Python’s <code>dict</code> does not keep orders.</strong> When using a <code>list</code> of <code>dict</code>, column names are automatically generated from <code>dict</code> keys; but they may not be in your favorite order. However, you can easily reorder the columns:</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df = df[["name", "area", "population"]]
+&gt;&gt;&gt; df
+           name  area  population
+0        Monaco  1.98       36371
+1     Gibraltar  6.80       29431
+2  Vatican City  0.44         900
+</code></pre>
+
+<p>How this works is explained in the next section.</p>
+
+<hr />
+
+<h3 id="indexing-dataframe">2. Indexing <code>DataFrame</code></h3>
+
+<h4 id="select-columns-and-cells-like-a-dict-or-an-object">2.1. Select columns and cells like a <code>dict</code> or an <code>object</code></h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/col.jpg" alt="" /></p>
+
+<p><strong>You can index <code>DataFrame</code> just like a <code>dict</code>.</strong> There’s one thing: in NumPy, rows come first, but in Pandas you can have columns come first.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df
+           name  area  population
+0        Monaco  1.98       36371
+1     Gibraltar  6.80       29431
+2  Vatican City  0.44         900
+</code></pre>
+
+<pre><code class="language-python">&gt;&gt;&gt; df["name"]
+0        Monaco
+1     Gibraltar
+2  Vatican City
+Name: name, dtype: object
+</code></pre>
+
+<pre><code class="language-python">&gt;&gt;&gt; df["name"][0]
+'Monaco'
+</code></pre>
+
+<p><strong>You can also access columns as attributes.</strong></p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.name
+0        Monaco
+1     Gibraltar
+2  Vatican City
+Name: name, dtype: object
+</code></pre>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.name[0]
+'Monaco'
+</code></pre>
+
+<p><strong>Slicing</strong> is also supported, which is useful for reordering columns.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df[["name", "area"]]
+           name  area
+0        Monaco  1.98
+1     Gibraltar  6.80
+2  Vatican City  0.44
+&gt;&gt;&gt; df[["area", "name"]]
+   area          name
+0  1.98        Monaco
+1  6.80     Gibraltar
+2  0.44  Vatican City
+</code></pre>
+
+<p><strong>But you shouldn’t <u>set</u> a value this way:</strong></p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df["name"][0] = "Monaco"
+__main__:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+</code></pre>
+
+<p>The error message is kind enough to offer <a href="http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy">a link to a documentation page</a>. But for the busy and lazy, here’s a summary: chain indexing like <code>df["name"][0]</code> makes two <code>__getitem__</code> calls internally, so it’s significantly slower when setting values. To go around this, see the next section on using a single <code>.loc</code> for setting(and getting) values.</p>
+
+<hr />
+
+<h4 id="select-rows-and-cells-with-loc-and-iloc">2.2. Select rows and cells with <code>.loc</code> and <code>.iloc</code></h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/row.jpg" alt="" /></p>
+
+<p><code>df.loc</code> is another <code>dict</code>-like way to index a <code>DataFrame</code> object, but this time <strong>rows come before columns.</strong></p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.loc[0]
+name          Monaco
+area            1.98
+population     36371
+Name: 0, dtype: object
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; df.loc[0, "name"]
+'Monaco'
+</code></pre>
+
+<p><strong>You can safely set values with <code>.loc</code>.</strong></p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.loc[0, "name"] = "MONACO"
+&gt;&gt;&gt; df
+           name  area  population
+0        MONACO  1.98       36371
+1     Gibraltar  6.80       29431
+2  Vatican City  0.44         900
+</code></pre>
+
+<p><strong>Slicing</strong>, of course, comes naturally. There’s also <code>.head()</code> and <code>.tail()</code> methods as shortcuts.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.loc[1:2]
+        name  area  population
+1  Gibraltar  6.80       29431
+2  Vatican City  0.44         900
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; df.loc[0, ["name", "area"]]
+name    Monaco
+area      1.98
+Name: 0, dtype: object
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; df.loc[:, "name"]
+0        Monaco
+1     Gibraltar
+2  Vatican City
+Name: name, dtype: object
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; df.head(2)
+        name  area  population
+0     Monaco  1.98       36371
+1  Gibraltar  6.80       29431
+</code></pre>
+
+<p><code>df.loc</code> also has a cousin <code>df.iloc</code>, who accepts only integer indices. That means string column names are no-no for <code>df.iloc</code>. But <code>df.iloc</code> is useful because <strong><code>df.loc</code> is actually fetching the rows by their labels, not their indices.</strong></p>
+
+<ul>
+  <li><strong>Labels</strong> are like <code>dict</code> keys;
+    <ul>
+      <li>You can have string labels as well as integer labels.</li>
+      <li>Labels’ orders are arbitrary, not alphabetic or numeric.</li>
+    </ul>
+  </li>
+  <li><strong>Indices</strong> are like <code>list</code> indices;
+    <ul>
+      <li>Indices are always integers.</li>
+      <li>Indices are automatically numbered.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The example below shows the difference between labels and indices: if you reorder the rows, labels will follow; but indices will be recalculated automatically.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df2 = df.loc[[2,1,0], "name"]
+&gt;&gt;&gt; df2
+2  Vatican City
+1     Gibraltar
+0        Monaco
+Name: name, dtype: object
+&gt;&gt;&gt; df2.loc[0]
+'Monaco'
+&gt;&gt;&gt; df2.iloc[0]
+'Vatican City'
+</code></pre>
+
+<p>So, a pros-and-cons summary:</p>
+
+<ul>
+  <li><code>df[][]</code> is easy, but it’s not for setting values.</li>
+  <li><code>df.loc[]</code> lets you set values, but the labels can be in mixed order.</li>
+  <li><code>df.iloc[]</code> lets you set values, but you can’t use string labels.</li>
+</ul>
+
+<p><strong>In short, use <code>.loc[]</code> by default, and take <code>df.column_name</code> or <code>df["column_name"]</code> as its read-only shortcut.</strong></p>
+
+<hr />
+
+<h4 id="iterating-through-rows">2.3. Iterating through rows</h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/iter.jpg" alt="" /></p>
+
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.iterrows.html"><code>df.iterrows()</code></a> is your friend if you want to loop the rows of your data:</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; for i, row in df.iterrows():
+...     print(row["name"])
+... 
+Monaco
+Gibraltar
+Vatican City
+</code></pre>
+
+<hr />
+
+<h4 id="filtering-and-unique-values">2.4. Filtering and unique values</h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/filter.jpg" alt="" /></p>
+
+<p><strong>Pandas supports boolean list filtering, which can be used to select items by condition.</strong> This is one of the killer apps of Pandas. Let’s pick countries that have lower area than 2 square kilometers:</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.area &lt; 2
+0     True
+1    False
+2     True
+Name: area, dtype: bool
+&gt;&gt;&gt; df.loc[df.area &lt; 2]
+           name  area  population
+0        Monaco  1.98       36371
+2  Vatican City  0.44         900
+</code></pre>
+
+<p>This works because <code>df.area</code> is interpreted as a <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html#pandas.Series"><code>Series</code></a> object which supports element-wise operations. See section 3.1. for more details.</p>
+
+<p>Also,
+<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.unique.html"><code>.unique()</code></a> method on a column gives you unique values in the column.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df2 = df.loc[[0, 1, 1]]
+&gt;&gt;&gt; df2
+        name  area  population
+0     Monaco  1.98       36371
+1  Gibraltar  6.80       29431
+1  Gibraltar  6.80       29431
+&gt;&gt;&gt; df2.name.unique()
+array(['Monaco', 'Gibraltar'], dtype=object)
+</code></pre>
+
+<hr />
+
+<h3 id="data-manipulation">3. Data manipulation</h3>
+
+<h4 id="adding-a-new-column-or-a-row">3.1. Adding a new column or a row</h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/add.jpg" alt="" /></p>
+
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.assign.html"><code>df.assign()</code></a> method returns a new <code>DataFrame</code> object with the newly assign column(s).</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.assign(population_density=(df.population/df.area).astype(int))
+           name  area  population  population_density
+0        Monaco  1.98       36371               18369
+1     Gibraltar  6.80       29431                4328
+2  Vatican City  0.44         900                2045
+</code></pre>
+
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.append.html"><code>df.append()</code></a> method returns a new <code>DataFrame</code> object, this time with the newly appended row(s).</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; new_rows = []
+&gt;&gt;&gt; new_rows.append({"name": "San Marino", "area": 61, "population": 27730})
+&gt;&gt;&gt; new_rows.append({"name": "Malta", "area": 316, "population": 397499})
+&gt;&gt;&gt; df.append(new_rows, ignore_index=True)
+           name    area  population
+0        Monaco    1.98       36371
+1     Gibraltar    6.80       29431
+2  Vatican City    0.44         900
+3    San Marino   61.00       27730
+4         Malta  316.00      397499
+</code></pre>
+
+<p>Like <code>df.assign()</code> and <code>df.append()</code>, <strong>almost all operations on a <code>DataFrame</code> object returns a new object</strong>, instead of changing the data in-place.</p>
+
+<hr />
+
+<h4 id="sorting">3.2. Sorting</h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/sort.jpg" alt="" /></p>
+
+<p>Use
+<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sort_values.html"><code>df.sort_values()</code></a> sort a column by value.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df2 = df.sort_values("area")
+           name  area  population
+2  Vatican City  0.44         900
+0        Monaco  1.98       36371
+1     Gibraltar  6.80       29431
+</code></pre>
+
+<p>Use <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sort_index.html"><code>df.sort_index()</code></a> to sort by labels. Yes, it should be called <code>df.sort_labels()</code> instead, but oh well.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df2.sort_index()
+           name  area  population
+0        Monaco  1.98       36371
+1     Gibraltar  6.80       29431
+2  Vatican City  0.44         900
+</code></pre>
+
+<hr />
+
+<h4 id="element-wise-operations-and-type-conversions">3.3. Element-wise operations and type conversions</h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/element.jpg" alt="" /></p>
+
+<p><strong>1D data in Pandas is a <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html#pandas.Series"><code>Series</code></a> object, and it supports element-wise operations and type conversions.</strong> If you slice a 1D data from a <code>DataFrame</code> object, e.g. a column or a row, it will be an object of the <code>Series</code> class. A <code>Series</code> object is homogeneous, so it supports type conversions through the NumPy-like <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.astype.html"><code>.astype()</code></a> method.</p>
+
+<p>Let’s calculate the population density per country using an element-wise division:</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; (df.population / df.area).astype(int)
+0    18369
+1     4328
+2     2045
+dtype: int32
+</code></pre>
+
+<p>Element-wise operations can be used to create boolean filters, which was used in section 2.3. to select items by condition.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.area &lt; 2
+0     True
+1    False
+2     True
+Name: area, dtype: bool
+</code></pre>
+
+<hr />
+
+<h4 id="applying-a-function-over-a-column">3.4. Applying a function over a column</h4>
+
+<p><img src="assets/posts/2017-10-22-Pandas/apply.jpg" alt="" /></p>
+
+<p>Use
+<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.apply.html"><code>.apply()</code></a> to broadcast a function over multiple values.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; df.name.apply(lambda x: x.upper())
+0          MONACO
+1       GIBRALTAR
+2    VATICAN CITY
+Name: name, dtype: object
+</code></pre>
+
+<hr />
+
+<h2 id="further-reading">Further reading</h2>
+
+<p>From the <a href="http://pandas.pydata.org/pandas-docs/stable/index.html">official docs</a>:</p>
+
+<ul>
+  <li><a href="https://pandas.pydata.org/pandas-docs/stable/dsintro.html">Intro to Data
+  Structures</a></li>
+  <li><a href="http://pandas.pydata.org/pandas-docs/stable/indexing.html">Indexing and Selecting
+  Data</a></li>
+</ul>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/june" style="background-image: url(/assets/images/june.jpg)"><span class="hidden">'s Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/june">June Oh</a></h4>
+                
+                
+                    <p> Researcher in deep learning for digital pathology.</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> Deep Bio, Inc.</span> 
+                    <span class="author-link icon-link"><a href="http://juneoh.com/"> http://juneoh.com/</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Pandas&amp;url=http://juneoh.com/Pandas"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://juneoh.com/Pandas"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://juneoh.com/Pandas"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev no-cover" href="/11%EC%A4%84%EC%9D%98-%EC%BD%94%EB%93%9C-%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%84-%ED%8C%A8%EB%8B%89%EC%97%90-%EB%B9%A0%EB%9C%A8%EB%A6%AC%EB%8B%A4">
+            <section class="post">
+                <h2>11줄의 코드, 인터넷을 패닉에 빠뜨리다</h2>
+                <p>
+                    
+                    이 글은 블로터에 기고했던 글입니다. 지난 3월22일 오후 5시 30분경(미국 동부시각), 전세계 Node.js 커뮤니티 개발자들은...
+                    
+                </p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">June Oh</a> &copy; 2017</section>
+        </footer>
+    </div>
+    <!-- [[! highlight.js ]] -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-69281367-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+</html>
