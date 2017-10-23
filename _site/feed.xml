@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>June Oh - Articles</title>
+    <description>A personal blog on life and technology.</description>
+    <link>
+    http://juneoh.com/</link>
+    
+      
+      <item>
+        <title>Pandas</title>
+        
+          <description>&lt;h2 id=&quot;the-case&quot;&gt;The case&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Sun, 22 Oct 2017 00:00:00 +0900</pubDate>
+        <link>
+        http://juneoh.com//Pandas</link>
+        <guid isPermaLink="true">http://juneoh.com//Pandas</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>11줄의 코드, 인터넷을 패닉에 빠뜨리다</title>
+        
+          <description>&lt;blockquote&gt;
+  &lt;p&gt;이 글은 &lt;a href=&quot;http://www.bloter.net/archives/253447&quot;&gt;블로터에 기고했던 글&lt;/a&gt;입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+        
+        <pubDate>Mon, 04 Apr 2016 00:00:00 +0900</pubDate>
+        <link>
+        http://juneoh.com//11%EC%A4%84%EC%9D%98-%EC%BD%94%EB%93%9C-%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%84-%ED%8C%A8%EB%8B%89%EC%97%90-%EB%B9%A0%EB%9C%A8%EB%A6%AC%EB%8B%A4</link>
+        <guid isPermaLink="true">http://juneoh.com//11%EC%A4%84%EC%9D%98-%EC%BD%94%EB%93%9C-%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%84-%ED%8C%A8%EB%8B%89%EC%97%90-%EB%B9%A0%EB%9C%A8%EB%A6%AC%EB%8B%A4</guid>
+      </item>
+      
+    
+  </channel>
+</rss>
