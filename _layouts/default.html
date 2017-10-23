@@ -28,8 +28,7 @@
     {% include head.html %}
 
 </head>
-<body class="{% if paginator.page > 1 %}paged archive-template{% elsif page.class %}{{ page.class }}{% else %}home-template{% endif %} nav-closed">
-
+<body class="{% if paginator.page > 1 %}paged archive-template{% elsif page.layout == 'post' %}post-template{% elsif page.class %}{{ page.class }}{% else %}home-template{% endif %} nav-closed">
     {% include navigation.html %}
 
     <div class="site-wrapper">
@@ -39,7 +38,6 @@
 
         <footer class="site-footer clearfix">
           <section class="copyright"><a href="{{ site.baseurl }}">{{ site.name }}</a> &copy; {{  site.time | date: '%Y' }}</section>
-          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
         </footer>
     </div>
     <!-- [[! highlight.js ]] -->

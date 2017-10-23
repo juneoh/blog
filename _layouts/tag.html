@@ -1,6 +1,6 @@
 ---
 layout: default
-cover: 'assets/images/cover2.jpg'
+cover: 'assets/images/cover_home.jpg'
 class: 'tag-template'
 navigation: True
 logo: 'assets/images/ghost.png'
@@ -10,11 +10,11 @@ current: tag
 <!-- < dynamically overriding backgrounds for tags as well as descriptions -->
 {% if page.url contains 'essays' %}
    {% assign tag_title='Essays' %}
-   {% assign tag_description='Personal writings on books, people, places and such.' %}
+   {% assign tag_description='"Either write something worth reading,<br />or do something worth writing."<br />- Benjamin Franklin' %}
    {% assign tag_cover='assets/images/cover_essays.jpg' %}
 {% elsif page.url contains 'UxP' %}
-   {% assign tag_title='UNIX and Python for Data Scientists' %}
-   {% assign tag_description='Tools for the sake of productivity.' %}
+   {% assign tag_title='UxP' %}
+   {% assign tag_description='UNIX and Python for Data Scientists' %}
    {% assign tag_cover='assets/images/cover_uxp.jpg' %}
 {% elsif page.url contains 'pytorch' %}
    {% assign tag_title='Deeply PyTorch' %}
@@ -28,7 +28,7 @@ current: tag
 <!-- If we have a tag cover, display that - else blog cover - else nothing -->
 <header class="main-header tag-head {% if page.cover %}" style="background-image: url({{ site.baseurl }}{% if tag_cover %}{{ tag_cover }}{% else %}{{ page.cover }}{% endif%}) {% else %}no-cover{% endif %}">
     <nav class="main-nav overlay clearfix">
-        {% if page.logo %}<a class="blog-logo" href="{{ site.baseurl }}"><img src="{{ site.baseurl }}{{ page.logo }}" alt="Blog Logo" /></a>{% endif %}
+        <a class="blog-logo" href="{{ site.baseurl }}">{{ site.name }}</a>
         {% if page.navigation %}
             <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         {% endif %}
