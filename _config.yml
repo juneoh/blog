@@ -16,14 +16,14 @@ author: 'June Oh'
 nickname: june
 bio: 'Researcher in deep learning for digital pathology.'
 location: 'Deep Bio, Inc.'
-url: 'http://juneoh.com/'
+url: 'https://juneoh.com/'
 image: 'assets/images/june.jpg'
 
-short_url: 'http://juneoh.com/'
+short_url: 'https://juneoh.com/'
 google_analytics: UA-69281367-1
 disqus: username
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /
+baseurl: 'https://juneoh.com/'
 
 # Permalinks
 permalink: /:title

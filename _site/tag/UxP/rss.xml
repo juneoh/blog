@@ -3,9 +3,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
    
-      <title>http://juneoh.com/</title>
+      <title>https://juneoh.com/</title>
    
-   <link>http://juneoh.com/</link>
+   <link>https://juneoh.com/</link>
    <description>A personal blog on life and technology.</description>
    <language>en-us</language>
    <managingEditor> June Oh</managingEditor>
@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>Pandas</title>
-	  <link>//Pandas</link>
+	  <link>https://juneoh.com//Pandas</link>
 	  <author>June Oh</author>
 	  <pubDate>2017-10-22T00:00:00+09:00</pubDate>
-	  <guid>//Pandas</guid>
+	  <guid>https://juneoh.com//Pandas</guid>
 	  <description><![CDATA[
 	     <h2 id="the-case">The case</h2>
 
