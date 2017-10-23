@@ -3,9 +3,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
    
-      <title>http://juneoh.com/</title>
+      <title>https://juneoh.com/</title>
    
-   <link>http://juneoh.com/</link>
+   <link>https://juneoh.com/</link>
    <description>A personal blog on life and technology.</description>
    <language>en-us</language>
    <managingEditor> June Oh</managingEditor>
@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>11줄의 코드, 인터넷을 패닉에 빠뜨리다</title>
-	  <link>//11%EC%A4%84%EC%9D%98-%EC%BD%94%EB%93%9C-%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%84-%ED%8C%A8%EB%8B%89%EC%97%90-%EB%B9%A0%EB%9C%A8%EB%A6%AC%EB%8B%A4</link>
+	  <link>https://juneoh.com//11%EC%A4%84%EC%9D%98-%EC%BD%94%EB%93%9C-%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%84-%ED%8C%A8%EB%8B%89%EC%97%90-%EB%B9%A0%EB%9C%A8%EB%A6%AC%EB%8B%A4</link>
 	  <author>June Oh</author>
 	  <pubDate>2016-04-04T00:00:00+09:00</pubDate>
-	  <guid>//11%EC%A4%84%EC%9D%98-%EC%BD%94%EB%93%9C-%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%84-%ED%8C%A8%EB%8B%89%EC%97%90-%EB%B9%A0%EB%9C%A8%EB%A6%AC%EB%8B%A4</guid>
+	  <guid>https://juneoh.com//11%EC%A4%84%EC%9D%98-%EC%BD%94%EB%93%9C-%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%84-%ED%8C%A8%EB%8B%89%EC%97%90-%EB%B9%A0%EB%9C%A8%EB%A6%AC%EB%8B%A4</guid>
 	  <description><![CDATA[
 	     <blockquote>
   <p>이 글은 <a href="http://www.bloter.net/archives/253447">블로터에 기고했던 글</a>입니다.</p>
